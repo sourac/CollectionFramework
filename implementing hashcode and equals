@@ -1,0 +1,66 @@
+package com.atul.overridingequalsandhashcode;
+
+import java.util.Objects;
+
+public class SuperNova {
+
+	private String name;
+	private int age;
+	private String passport;
+
+	public SuperNova() {
+		super();
+	}
+
+	public SuperNova(String name, int age, String passport) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.passport = passport;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getPassport() {
+		return passport;
+	}
+
+	public void setPassport(String passport) {
+		this.passport = passport;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o == this)
+			return true;
+		if (!(o instanceof SuperNova))
+			return false;
+		SuperNova sn = (SuperNova) o;
+		return age == sn.age && name == sn.name && passport == sn.passport;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, age, passport);
+	}
+
+	public static void main(String[] args) {
+		SuperNova sn1 = new SuperNova("atul", 25, "indianps");
+		SuperNova sn2 = new SuperNova("barkha", 24, "indianps");
+		System.out.println(sn1.equals(sn2));
+	}
+}
